@@ -1,0 +1,28 @@
+﻿<Window x:Class="TODO.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TODO List" Height="450" Width="600">
+    <Grid>
+        <ListView x:Name="TasksListView" Margin="10,10,10,50" SelectionMode="Single">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Completed" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsCompleted, Mode=TwoWay}" 
+                                          Checked="CheckBox_Checked" 
+                                          Unchecked="CheckBox_Unchecked" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}" Width="200"/>
+                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="TitleTextBox" Width="100" Height="25" Margin="-100,400,0,0" />
+        <TextBox x:Name="DescriptionTextBox" Width="150" Height="25" Margin="200,400,0,0" />
+        <Button Content="Add Task" Width="100" Height="25" Margin="480,400,0,0" Click="AddTaskButton_Click"/>
+        <Button Content="Delete Completed Tasks" Width="150" Height="25" Margin="-400,400,0,0" Click="DeleteCompletedTasksButton_Click"/>
+    </Grid>
+</Window>
